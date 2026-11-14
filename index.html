@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia U.A. | Misión Matemáticas 6º EP - Andalucía</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bangers para estética cómic/anime y Atkinson Hyperlegible / Inter para DUA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bangers&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        comic: ['"Bangers"', 'cursive', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        dua: ['"Atkinson Hyperlegible"', 'sans-serif']
+                    },
+                    colors: {
+                        uaBlue: '#0047AB',
+                        uaDark: '#0F172A',
+                        allMightYellow: '#FFD700',
+                        dekuGreen: '#10B981',
+                        bakugoOrange: '#F97316',
+                        heroRed: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados para estética Cómic / Anime y Accesibilidad DUA */
+        body {
+            background-color: #f0f4f8;
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            transition: all 0.25s ease;
+        }
+
+        /* Modos DUA */
+        body.dua-large-text {
+            font-size: 1.18rem;
+        }
+        body.dua-easy-read {
+            font-family: 'Atkinson Hyperlegible', sans-serif !important;
+            letter-spacing: 0.03em;
+            line-height: 1.7;
+        }
+        body.dua-high-contrast {
+            background-color: #000000 !important;
+            background-image: none !important;
+            color: #ffffff !important;
+        }
+        body.dua-high-contrast .comic-card {
+            background-color: #111827 !important;
+            color: #ffffff !important;
+            border-color: #FFD700 !important;
+            box-shadow: 6px 6px 0px #FFD700 !important;
+        }
+        body.dua-high-contrast .text-slate-700,
+        body.dua-high-contrast .text-slate-600,
+        body.dua-high-contrast .text-slate-800 {
+            color: #f3f4f6 !important;
+        }
+        body.dua-high-contrast .bg-slate-50,
+        body.dua-high-contrast .bg-slate-100,
+        body.dua-high-contrast .bg-blue-50 {
+            background-color: #1f2937 !important;
+            color: #ffffff !important;
+        }
+
+        /* Bordes y sombras estilo Cómic */
+        .comic-card {
+            border: 3px solid #0f172a;
+            box-shadow: 6px 6px 0px #0f172a;
+            border-radius: 1rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .comic-card-hover:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px #0f172a;
+        }
+        .comic-btn {
+            border: 3px solid #0f172a;
+            box-shadow: 4px 4px 0px #0f172a;
+            font-weight: 800;
+            transition: all 0.1s ease;
+        }
+        .comic-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px #0f172a;
+        }
+        .comic-title {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 0.06em;
+            text-shadow: 2px 2px 0px #0f172a;
+        }
+
+        /* Efecto onomatopeya animada */
+        @keyframes smashPop {
+            0% { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(-3deg); opacity: 1; }
+        }
+        .animate-smash {
+            animation: smashPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* Estilos de impresión para el Informe LOMLOE */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            #print-report-container {
+                display: block !important;
+                position: static !important;
+                width: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .comic-card {
+                box-shadow: none !important;
+                border: 1.5px solid #333 !important;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-slate-900 font-sans">
+
+    <!-- BARRA SUPERIOR DE ACCESIBILIDAD DUA Y AUTORÍA -->
+    <header class="bg-uaDark text-white border-b-4 border-allMightYellow sticky top-0 z-40 no-print">
+        <div class="max-w-7xl mx-auto px-3 py-2 flex flex-wrap items-center justify-between gap-2">
+            <!-- Logo e Identidad -->
+            <div class="flex items-center gap-3">
+                <div class="bg-allMightYellow text-uaDark font-comic text-2xl px-3 py-1 rounded-lg border-2 border-white transform -rotate-2 select-none">
+                    U.A. 6º EP
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm sm:text-base leading-tight text-allMightYellow">ACADEMIA DE HÉROES: MATEMÁTICAS (ANDALUCÍA)</h1>
+                    <p class="text-xs text-slate-300">Creada por <strong class="text-white underline decoration-allMightYellow">Carlos H. González Ortega (profesaurio)</strong></p>
+                </div>
+            </div>
+
+            <!-- Controles DUA (Diseño Universal para el Aprendizaje) -->
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-allMightYellow hidden md:inline mr-1">Apoyos DUA:</span>
+                
+                <button onclick="toggleDUA('largeText')" id="btn-dua-text" title="Aumentar tamaño de letra" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-bold flex items-center gap-1">
+                    <span>🔍</span> <span class="hidden sm:inline">Texto +</span>
+                </button>
+                
+                <button onclick="toggleDUA('easyRead')" id="btn-dua-easy" title="Tipografía Lectura Fácil y espaciado amplio" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-bold flex items-center gap-1">
+                    <span>📖</span> <span class="hidden sm:inline">Lectura Fácil</span>
+                </button>
+
+                <button onclick="toggleDUA('highContrast')" id="btn-dua-contrast" title="Modo Alto Contraste" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-bold flex items-center gap-1">
+                    <span>🌓</span> <span class="hidden sm:inline">Contraste</span>
+                </button>
+
+                <button onclick="toggleSupportDrawer()" class="px-2.5 py-1.5 rounded-lg bg-dekuGreen text-slate-950 hover:bg-emerald-400 border border-white text-xs font-extrabold flex items-center gap-1">
+                    <span>🛠️</span> <span>Pistas Visuales</span>
+                </button>
+
+                <button onclick="openCurriculumModal()" class="px-2.5 py-1.5 rounded-lg bg-uaBlue text-white hover:bg-blue-600 border border-allMightYellow text-xs font-bold flex items-center gap-1">
+                    <span>📜</span> <span class="hidden sm:inline">Normativa LOMLOE</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PANEL DESPLEGABLE DE APOYO VISUAL DUA (Recta numérica + Regla de signos + Cuadrantes) -->
+    <div id="dua-support-drawer" class="hidden bg-amber-50 border-b-4 border-slate-900 px-4 py-4 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-extrabold text-slate-900 flex items-center gap-2 text-base sm:text-lg">
+                    <span>🦸‍♂️</span> Cuaderno de Apoyo Visual DUA (Consulta libre durante las misiones)
+                </h2>
+                <button onclick="toggleSupportDrawer()" class="px-3 py-1 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-700">Cerrar Apoyo ✕</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <!-- Apoyo 1: Recta Numérica -->
+                <div class="bg-white p-3 rounded-xl border-2 border-slate-800">
+                    <h3 class="font-bold text-uaBlue mb-1">1. La Recta Numérica Entera</h3>
+                    <p class="text-xs text-slate-600 mb-2">Hacia la <strong>derecha</strong> los números son mayores (+). Hacia la <strong>izquierda</strong> son menores (-).</p>
+                    <svg viewBox="0 0 320 65" class="w-full h-auto">
+                        <line x1="10" y1="30" x2="310" y2="30" stroke="#0f172a" stroke-width="2.5"/>
+                        <polygon points="310,30 302,25 302,35" fill="#0f172a"/>
+                        <polygon points="10,30 18,25 18,35" fill="#0f172a"/>
+                        <!-- Marcas de -5 a +5 -->
+                        <g font-size="11" font-weight="bold" text-anchor="middle">
+                            <line x1="35" y1="24" x2="35" y2="36" stroke="#ef4444" stroke-width="2"/><text x="35" y="50" fill="#ef4444">-5</text>
+                            <line x1="60" y1="25" x2="60" y2="35" stroke="#ef4444"/><text x="60" y="50" fill="#ef4444">-4</text>
+                            <line x1="85" y1="25" x2="85" y2="35" stroke="#ef4444"/><text x="85" y="50" fill="#ef4444">-3</text>
+                            <line x1="110" y1="25" x2="110" y2="35" stroke="#ef4444"/><text x="110" y="50" fill="#ef4444">-2</text>
+                            <line x1="135" y1="25" x2="135" y2="35" stroke="#ef4444"/><text x="135" y="50" fill="#ef4444">-1</text>
+                            <circle cx="160" cy="30" r="4" fill="#0f172a"/><text x="160" y="50" fill="#0f172a">0</text>
+                            <line x1="185" y1="25" x2="185" y2="35" stroke="#10b981"/><text x="185" y="50" fill="#047857">+1</text>
+                            <line x1="210" y1="25" x2="210" y2="35" stroke="#10b981"/><text x="210" y="50" fill="#047857">+2</text>
+                            <line x1="235" y1="25" x2="235" y2="35" stroke="#10b981"/><text x="235" y="50" fill="#047857">+3</text>
+                            <line x1="260" y1="25" x2="260" y2="35" stroke="#10b981"/><text x="260" y="50" fill="#047857">+4</text>
+                            <line x1="285" y1="24" x2="285" y2="36" stroke="#10b981" stroke-width="2"/><text x="285" y="50" fill="#047857">+5</text>
+                        </g>
+                        <text x="55" y="14" font-size="9" fill="#ef4444" font-weight="bold">← MENORES (Negativos)</text>
+                        <text x="195" y="14" font-size="9" fill="#047857" font-weight="bold">MAYORES (Positivos) →</text>
+                    </svg>
+                </div>
+
+                <!-- Apoyo 2: Truco de Sumas de Números Enteros -->
+                <div class="bg-white p-3 rounded-xl border-2 border-slate-800">
+                    <h3 class="font-bold text-uaBlue mb-1">2. Suma de Números Enteros</h3>
+                    <ul class="text-xs space-y-1.5 text-slate-700">
+                        <li><span class="bg-emerald-100 text-emerald-900 px-1.5 py-0.5 rounded font-bold">Mismo signo:</span> Se suman sus valores y se mantiene el signo que tienen.<br>Ej: <code>(-3) + (-2) = -5</code> &nbsp;|&nbsp; <code>(+4) + (+2) = +6</code></li>
+                        <li><span class="bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded font-bold">Distinto signo:</span> Se restan sus valores y se pone el signo del número con mayor valor absoluto.<br>Ej: <code>(-5) + (+3) = -2</code> &nbsp;|&nbsp; <code>(+7) + (-4) = +3</code></li>
+                        <li><span class="bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded font-bold">Suma con cero (0):</span> Al sumar 0, el número no cambia.<br>Ej: <code>(-6) + 0 = -6</code></li>
+                    </ul>
+                </div>
+
+                <!-- Apoyo 3: Ejes Cartesianos -->
+                <div class="bg-white p-3 rounded-xl border-2 border-slate-800">
+                    <h3 class="font-bold text-uaBlue mb-1">3. Coordenadas (X, Y) y Movimientos</h3>
+                    <p class="text-xs text-slate-700 mb-1">Primero se lee el eje horizontal <strong>X</strong> (izq/der) y luego el vertical <strong>Y</strong> (abajo/arriba).</p>
+                    <div class="grid grid-cols-2 gap-1 text-xs font-bold text-center mt-2">
+                        <div class="bg-blue-50 p-1.5 rounded border border-blue-200">2º Cuadrante<br><span class="text-rose-600">(-X</span>, <span class="text-emerald-600">+Y)</span></div>
+                        <div class="bg-blue-50 p-1.5 rounded border border-blue-200">1º Cuadrante<br><span class="text-emerald-600">(+X</span>, <span class="text-emerald-600">+Y)</span></div>
+                        <div class="bg-blue-50 p-1.5 rounded border border-blue-200">3º Cuadrante<br><span class="text-rose-600">(-X</span>, <span class="text-rose-600">-Y)</span></div>
+                        <div class="bg-blue-50 p-1.5 rounded border border-blue-200">4º Cuadrante<br><span class="text-emerald-600">(+X</span>, <span class="text-rose-600">-Y)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
+
+        <!-- PANTALLA 1: BIENVENIDA Y CREACIÓN DE FICHA DE ASPIRANTE A HÉROE -->
+        <section id="screen-welcome" class="max-w-3xl mx-auto">
+            <div class="comic-card bg-white p-6 sm:p-8 relative overflow-hidden">
+                <!-- Banda decorativa superior -->
+                <div class="bg-gradient-to-r from-uaBlue via-blue-700 to-indigo-800 -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-6 text-white border-b-4 border-slate-900 mb-6">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="inline-block bg-allMightYellow text-slate-900 text-xs font-black uppercase px-3 py-1 rounded-full border-2 border-slate-900 mb-2">
+                                Curso 6º Primaria · CEIP Andalucía (LOMLOE)
+                            </span>
+                            <h2 class="comic-title text-3xl sm:text-5xl text-allMightYellow tracking-wide">
+                                ¡ENTRENAMIENTO PLUS ULTRA!
+                            </h2>
+                            <p class="text-blue-100 text-sm sm:text-base mt-1 font-medium">
+                                Supera las 6 misiones matemáticas de la Academia U.A. sobre números enteros, coordenadas y geometría en el plano.
+                            </p>
+                        </div>
+                        <!-- Emblema SVG Heroico -->
+                        <div class="shrink-0">
+                            <svg width="96" height="96" viewBox="0 0 100 100" class="drop-shadow-md">
+                                <polygon points="50,4 63,32 95,36 72,58 78,90 50,74 22,90 28,58 5,36 37,32" fill="#FFD700" stroke="#0f172a" stroke-width="4"/>
+                                <circle cx="50" cy="50" r="24" fill="#0047AB" stroke="#0f172a" stroke-width="3"/>
+                                <text x="50" y="57" font-family="Bangers, sans-serif" font-size="22" fill="#FFD700" text-anchor="middle" letter-spacing="1">U.A.</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Identificación -->
+                <div class="space-y-6">
+                    <div>
+                        <label for="student-name" class="block text-base font-extrabold text-slate-800 mb-2">
+                            1. Escribe tu nombre y apellidos (Aspirante a Héroe/Heroína):
+                        </label>
+                        <input type="text" id="student-name" placeholder="Ej: Izuku Midoriya / Sofía García..." 
+                               class="w-full px-4 py-3 text-lg font-bold rounded-xl border-3 border-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-allMightYellow">
+                        <p id="name-error" class="hidden text-rose-600 font-bold text-sm mt-1">⚠️ Por favor, escribe tu nombre antes de comenzar tu entrenamiento.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-base font-extrabold text-slate-800 mb-3">
+                            2. Elige tu Don / Emblema de Héroe para esta misión:
+                        </label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="avatar-selector">
+                            <!-- Avatar 1: One For All -->
+                            <button type="button" onclick="selectAvatar('oneforall', this)" class="avatar-option selected-avatar comic-card p-3 bg-emerald-50 border-emerald-600 flex flex-col items-center text-center cursor-pointer ring-4 ring-allMightYellow">
+                                <svg width="60" height="60" viewBox="0 0 80 80">
+                                    <circle cx="40" cy="40" r="35" fill="#10B981" stroke="#0f172a" stroke-width="3"/>
+                                    <path d="M44 12 L24 44 L40 44 L34 68 L58 34 L42 34 Z" fill="#FFD700" stroke="#0f172a" stroke-width="2.5"/>
+                                </svg>
+                                <span class="font-extrabold text-xs mt-2 text-slate-900">Rayo Esmeralda</span>
+                                <span class="text-[11px] text-slate-600">Cálculo Ágil</span>
+                            </button>
+
+                            <!-- Avatar 2: Explosión -->
+                            <button type="button" onclick="selectAvatar('explosion', this)" class="avatar-option comic-card p-3 bg-orange-50 flex flex-col items-center text-center cursor-pointer">
+                                <svg width="60" height="60" viewBox="0 0 80 80">
+                                    <circle cx="40" cy="40" r="35" fill="#F97316" stroke="#0f172a" stroke-width="3"/>
+                                    <polygon points="40,10 48,28 68,22 56,39 72,52 52,54 56,72 40,60 24,72 28,54 8,52 24,39 12,22 32,28" fill="#EF4444" stroke="#FFD700" stroke-width="2"/>
+                                </svg>
+                                <span class="font-extrabold text-xs mt-2 text-slate-900">Impacto Nitro</span>
+                                <span class="text-[11px] text-slate-600">Fuerza Lógica</span>
+                            </button>
+
+                            <!-- Avatar 3: Mitad Frío Mitad Calor -->
+                            <button type="button" onclick="selectAvatar('halfhot', this)" class="avatar-option comic-card p-3 bg-sky-50 flex flex-col items-center text-center cursor-pointer">
+                                <svg width="60" height="60" viewBox="0 0 80 80">
+                                    <path d="M40,5 A35,35 0 0,0 40,75 Z" fill="#38BDF8" stroke="#0f172a" stroke-width="3"/>
+                                    <path d="M40,5 A35,35 0 0,1 40,75 Z" fill="#EF4444" stroke="#0f172a" stroke-width="3"/>
+                                    <circle cx="40" cy="40" r="10" fill="#FFFFFF" stroke="#0f172a" stroke-width="2.5"/>
+                                </svg>
+                                <span class="font-extrabold text-xs mt-2 text-slate-900">Cero y Fuego</span>
+                                <span class="text-[11px] text-slate-600">Negativos/Positivos</span>
+                            </button>
+
+                            <!-- Avatar 4: Gravedad Cero -->
+                            <button type="button" onclick="selectAvatar('gravity', this)" class="avatar-option comic-card p-3 bg-purple-50 flex flex-col items-center text-center cursor-pointer">
+                                <svg width="60" height="60" viewBox="0 0 80 80">
+                                    <circle cx="40" cy="40" r="35" fill="#A855F7" stroke="#0f172a" stroke-width="3"/>
+                                    <ellipse cx="40" cy="40" rx="28" ry="11" fill="none" stroke="#FFD700" stroke-width="3" transform="rotate(-25 40 40)"/>
+                                    <circle cx="40" cy="40" r="12" fill="#F472B6" stroke="#0f172a" stroke-width="2.5"/>
+                                </svg>
+                                <span class="font-extrabold text-xs mt-2 text-slate-900">Órbita Espacial</span>
+                                <span class="text-[11px] text-slate-600">Coordenadas y Giros</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-2 border-uaBlue rounded-xl p-4 flex items-start gap-3">
+                        <span class="text-2xl">🔊</span>
+                        <div class="text-xs sm:text-sm text-slate-700">
+                            <p class="font-bold text-uaBlue">Accesibilidad DUA Activada:</p>
+                            <p>Todas las misiones cuentan con botón de <strong>lectura en voz alta</strong>, explicaciones paso a paso si cometes un error, pistas visuales desplegables y un <strong>Informe Oficial LOMLOE</strong> al finalizar.</p>
+                        </div>
+                    </div>
+
+                    <button onclick="startTraining()" class="w-full py-4 bg-allMightYellow hover:bg-yellow-400 text-slate-950 font-comic text-2xl sm:text-3xl tracking-wider rounded-xl comic-btn flex items-center justify-center gap-3 cursor-pointer">
+                        <span>¡COMENZAR ENTRENAMIENTO U.A.!</span>
+                        <span>⚡</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 2: PANEL DE MISIONES (HUB PRINCIPAL) -->
+        <section id="screen-dashboard" class="hidden space-y-6">
+            <!-- Cabecera del Aspirante -->
+            <div class="comic-card bg-white p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div id="hud-avatar" class="shrink-0"></div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="bg-uaBlue text-white text-xs font-extrabold px-2.5 py-0.5 rounded-full">ASPIRANTE CLASE 6º-A</span>
+                            <span id="hud-rank" class="bg-allMightYellow text-slate-950 text-xs font-black px-2.5 py-0.5 rounded-full border border-slate-900">RANGO: ASPIRANTE NOVATO</span>
+                        </div>
+                        <h2 id="hud-name" class="text-xl sm:text-2xl font-black text-slate-900 mt-1">Nombre del Alumno</h2>
+                        <p class="text-xs sm:text-sm text-slate-600">Progreso global: <strong id="hud-progress-text">0 / 60 retos superados</strong> (<span id="hud-score-pct">0%</span>)</p>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción Rápida -->
+                <div class="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end">
+                    <button onclick="showReportScreen()" class="flex-1 md:flex-initial px-4 py-2.5 bg-dekuGreen hover:bg-emerald-400 text-slate-950 rounded-xl comic-btn text-sm flex items-center justify-center gap-2 cursor-pointer">
+                        <span>📊</span>
+                        <span>Ver Informe LOMLOE</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Barra de Progreso General -->
+            <div class="bg-white border-3 border-slate-900 rounded-full h-6 p-1 shadow-inner">
+                <div id="global-progress-bar" class="bg-gradient-to-r from-uaBlue via-dekuGreen to-allMightYellow h-full rounded-full transition-all duration-500 flex items-center justify-end pr-2 text-[11px] font-black text-slate-950" style="width: 2%;">
+                </div>
+            </div>
+
+            <!-- Grid de las 6 Misiones (Saberes Básicos) -->
+            <div>
+                <h3 class="comic-title text-2xl sm:text-3xl text-uaBlue mb-3 flex items-center gap-2">
+                    <span>🎯</span> SELECCIONA TU MISIÓN DE ENTRENAMIENTO (10 RETOS POR BLOQUE)
+                </h3>
+                <div id="missions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Se genera dinámicamente desde JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 3: ZONA DE COMBATE / QUIZ INTERACTIVO -->
+        <section id="screen-quiz" class="hidden max-w-4xl mx-auto space-y-5">
+            <!-- Barra superior de la Misión -->
+            <div class="comic-card bg-uaDark text-white p-4 flex flex-wrap items-center justify-between gap-3">
+                <button onclick="returnToDashboard()" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-xs sm:text-sm font-bold border border-slate-500 cursor-pointer">
+                    ← Volver a Misiones
+                </button>
+                <div class="text-center">
+                    <span id="quiz-mission-badge" class="text-xs font-black uppercase text-allMightYellow tracking-wider block">MISIÓN 1</span>
+                    <h2 id="quiz-mission-title" class="font-bold text-sm sm:text-base">Título de la Misión</h2>
+                </div>
+                <div class="bg-slate-800 px-3 py-1.5 rounded-lg border border-allMightYellow text-xs sm:text-sm font-black text-allMightYellow">
+                    Reto <span id="quiz-q-number">1</span> / 10
+                </div>
+            </div>
+
+            <!-- Tarjeta de Pregunta -->
+            <div class="comic-card bg-white p-5 sm:p-7 relative">
+                <!-- Etiqueta Curricular LOMLOE discretamente visible -->
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b-2 border-slate-100">
+                    <span id="quiz-lomloe-tag" class="text-xs font-bold bg-blue-100 text-uaBlue px-2.5 py-1 rounded-md">
+                        Criterio LOMLOE: 2.1 · Saber: MA.03.A.1
+                    </span>
+                    <button onclick="speakCurrentQuestion()" class="px-3 py-1.5 bg-allMightYellow hover:bg-yellow-400 text-slate-950 rounded-lg border-2 border-slate-900 text-xs font-extrabold flex items-center gap-1.5 cursor-pointer shadow-sm">
+                        <span>🔊</span> <span>Escuchar enunciado</span>
+                    </button>
+                </div>
+
+                <!-- Enunciado de la pregunta -->
+                <div id="quiz-question-text" class="text-lg sm:text-xl font-extrabold text-slate-900 mb-5 leading-snug">
+                    Aquí aparece el enunciado de la pregunta...
+                </div>
+
+                <!-- Contenedor Gráfico SVG Dinámico (Rectas numéricas, Ejes Cartesianos, Simetrías/Giros) -->
+                <div id="quiz-visual-container" class="hidden mb-6 bg-slate-50 border-2 border-slate-300 rounded-xl p-3 flex justify-center items-center overflow-x-auto">
+                    <!-- SVG generado por JS -->
+                </div>
+
+                <!-- Opciones de respuesta (4 botones) -->
+                <div id="quiz-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <!-- 4 opciones generadas por JS -->
+                </div>
+
+                <!-- Caja de Retroalimentación Formativa (Acierto o Error explicado) -->
+                <div id="quiz-feedback-box" class="hidden mt-6 p-4 sm:p-5 rounded-xl border-3">
+                    <div class="flex items-start gap-3">
+                        <div id="feedback-icon" class="text-3xl shrink-0">💥</div>
+                        <div class="flex-grow">
+                            <div class="flex items-center justify-between gap-2 flex-wrap">
+                                <h4 id="feedback-title" class="font-comic text-2xl tracking-wide">¡PLUS ULTRA!</h4>
+                                <button onclick="speakFeedback()" class="px-2.5 py-1 bg-white/80 hover:bg-white text-slate-900 rounded-lg border border-slate-900 text-xs font-bold flex items-center gap-1 cursor-pointer">
+                                    <span>🔊</span> Escuchar explicación
+                                </button>
+                            </div>
+                            <p id="feedback-explanation" class="text-sm sm:text-base mt-1.5 font-medium leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+                        <button id="btn-next-question" onclick="nextQuestion()" class="px-6 py-3 bg-uaBlue hover:bg-blue-700 text-white rounded-xl comic-btn text-base flex items-center gap-2 cursor-pointer">
+                            <span>Siguiente Reto</span> <span>➔</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 4: INFORME DE EVALUACIÓN LOMLOE (ANDALUCÍA) -->
+        <section id="screen-report" class="hidden max-w-5xl mx-auto space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 no-print">
+                <button onclick="returnToDashboard()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-sm cursor-pointer">
+                    ← Volver a las Misiones
+                </button>
+                <div class="flex gap-2">
+                    <button onclick="window.print()" class="px-5 py-2.5 bg-allMightYellow hover:bg-yellow-400 text-slate-950 rounded-xl comic-btn text-sm flex items-center gap-2 cursor-pointer">
+                        <span>🖨️</span> <span>Imprimir / Guardar PDF Oficial</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Documento Imprimible -->
+            <div id="print-report-container" class="comic-card bg-white p-6 sm:p-8 space-y-6">
+                <!-- Encabezado Oficial del Informe -->
+                <div class="border-b-4 border-slate-900 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <p class="text-xs font-extrabold uppercase tracking-widest text-uaBlue">Consejería de Desarrollo Educativo y Formación Profesional · Junta de Andalucía</p>
+                        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">INFORME DE EVALUACIÓN CRITERIAL (6º E. PRIMARIA)</h2>
+                        <p class="text-sm text-slate-600 font-medium">Área de Matemáticas · Orden de 30 de mayo de 2023 · Proyecto Gamificado U.A.</p>
+                    </div>
+                    <div class="bg-slate-100 border-2 border-slate-900 px-4 py-2 rounded-xl text-right">
+                        <p class="text-xs text-slate-500 font-bold">Fecha de emisión</p>
+                        <p id="report-date" class="text-sm font-black text-slate-900"></p>
+                    </div>
+                </div>
+
+                <!-- Datos del Alumno y Dictamen Global -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border-2 border-slate-300">
+                        <p class="text-xs font-bold text-slate-500 uppercase">Alumnado Evaluado</p>
+                        <p id="report-student-name" class="text-lg font-black text-slate-900 mt-0.5">Nombre</p>
+                        <p id="report-hero-rank" class="text-xs font-bold text-uaBlue mt-1">Rango Heroico</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border-2 border-slate-300">
+                        <p class="text-xs font-bold text-slate-500 uppercase">Calificación Media Global</p>
+                        <div class="flex items-baseline gap-2 mt-0.5">
+                            <span id="report-global-grade" class="text-3xl font-black text-uaBlue">0.0</span>
+                            <span class="text-sm font-bold text-slate-500">/ 10</span>
+                            <span id="report-qualitative" class="ml-2 px-2 py-0.5 rounded text-xs font-black bg-slate-200">Sin calificar</span>
+                        </div>
+                        <p id="report-answered-count" class="text-xs text-slate-600 mt-1">0 de 60 actividades completadas</p>
+                    </div>
+
+                    <div id="report-verdict-box" class="p-4 rounded-xl border-2 flex flex-col justify-center">
+                        <p class="text-xs font-bold uppercase opacity-80">Dictamen Mínimos Exigidos (6º EP)</p>
+                        <p id="report-verdict-title" class="text-lg font-black mt-0.5">PENDIENTE</p>
+                        <p id="report-verdict-desc" class="text-xs mt-1">Completa las misiones para generar la valoración.</p>
+                    </div>
+                </div>
+
+                <!-- Tabla Detallada por Criterios de Evaluación y Saberes Básicos -->
+                <div>
+                    <h3 class="text-base font-black text-slate-900 uppercase tracking-wide mb-3">
+                        Desglose por Saberes Básicos, Competencias Específicas y Criterios de Evaluación (Orden 30/05/2023)
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse border-2 border-slate-900 text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-slate-900 text-white">
+                                    <th class="p-2.5 border border-slate-700">Bloque / Saber Básico</th>
+                                    <th class="p-2.5 border border-slate-700">Competencia y Criterio</th>
+                                    <th class="p-2.5 border border-slate-700 text-center">Aciertos</th>
+                                    <th class="p-2.5 border border-slate-700 text-center">Nota (0-10)</th>
+                                    <th class="p-2.5 border border-slate-700 text-center">Superación Mínimos</th>
+                                </tr>
+                            </thead>
+                            <tbody id="report-table-body">
+                                <!-- Rellenado por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Orientaciones Pedagógicas Personalizadas -->
+                <div class="bg-blue-50 border-2 border-uaBlue rounded-xl p-4">
+                    <h4 class="font-extrabold text-uaBlue text-sm mb-1">📋 Observaciones y Plan de Refuerzo / Ampliación DUA:</h4>
+                    <p id="report-recommendations" class="text-xs sm:text-sm text-slate-800 leading-relaxed"></p>
+                </div>
+
+                <!-- Pie oficial del informe con autoría -->
+                <div class="pt-4 border-t-2 border-slate-200 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+                    <span>Recurso Educativo Abierto (REA) · Diseño Universal para el Aprendizaje (DUA)</span>
+                    <span class="font-bold text-slate-800">Autoría y diseño pedagógico: Carlos H. González Ortega (profesaurio)</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL GUÍA DOCENTE Y NORMATIVA LOMLOE ANDALUCÍA -->
+    <div id="curriculum-modal" class="hidden fixed inset-0 bg-slate-950/75 z-50 flex items-center justify-center p-4 no-print">
+        <div class="comic-card bg-white max-w-4xl w-full max-h-[88vh] flex flex-col overflow-hidden">
+            <div class="bg-uaBlue text-white p-4 border-b-4 border-slate-900 flex justify-between items-center">
+                <div>
+                    <h3 class="font-comic text-2xl text-allMightYellow tracking-wide">GUÍA DOCENTE · NORMATIVA ANDALUCÍA (ORDEN 30/05/2023)</h3>
+                    <p class="text-xs text-blue-100">Concreción Curricular para 3.er Ciclo (6.º de Educación Primaria) · Área de Matemáticas</p>
+                </div>
+                <button onclick="closeCurriculumModal()" class="px-3 py-1.5 bg-heroRed text-white font-black rounded-lg border-2 border-slate-900 text-sm cursor-pointer">Cerrar ✕</button>
+            </div>
+            <div class="p-5 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-800">
+                <p class="bg-amber-50 border-l-4 border-allMightYellow p-3 rounded">
+                    Esta aplicación está diseñada bajo los principios del <strong>Diseño Universal para el Aprendizaje (DUA)</strong> recogidos en las Instrucciones y la <strong>Orden de 30 de mayo de 2023</strong> por la que se desarrolla el currículo correspondiente a la etapa de Educación Primaria en la Comunidad Autónoma de Andalucía.
+                </p>
+
+                <div class="space-y-3">
+                    <div class="border-2 border-slate-200 rounded-xl p-3">
+                        <h4 class="font-black text-uaBlue">1. Sentido Numérico (MA.03.A.1. / MA.03.A.2. / MA.03.A.3.)</h4>
+                        <p class="mt-1"><strong>Saberes asociados:</strong> Números enteros (positivos, negativos y el cero) en contextos cotidianos. Representación en la recta numérica. Comparación y ordenación. Estrategias de cálculo mental y escrito de sumas con números enteros.</p>
+                        <p class="mt-1 text-emerald-800 font-semibold"><strong>Competencias Específicas y Criterios:</strong> CE.MAT.2 (Criterios 2.1 y 2.2: Utilizar el sentido numérico para interpretar situaciones cotidianas y realizar cálculos con fluidez y flexibilidad) y CE.MAT.4 (Criterio 4.1: Modelizar situaciones mediante lenguaje matemático).</p>
+                    </div>
+
+                    <div class="border-2 border-slate-200 rounded-xl p-3">
+                        <h4 class="font-black text-uaBlue">2. Resolución de Problemas con Enteros (MA.03.A.3. / MA.03.F.1.)</h4>
+                        <p class="mt-1"><strong>Saberes asociados:</strong> Resolución de problemas aritméticos de varias etapas con números enteros (variaciones de temperatura, altitudes, balances, desplazamientos verticales).</p>
+                        <p class="mt-1 text-emerald-800 font-semibold"><strong>Competencias Específicas y Criterios:</strong> CE.MAT.1 (Criterios 1.1 y 1.2: Comprender problemas de la vida cotidiana, seleccionar estrategias adecuadas y comprobar la coherencia de las soluciones).</p>
+                    </div>
+
+                    <div class="border-2 border-slate-200 rounded-xl p-3">
+                        <h4 class="font-black text-uaBlue">3. Sentido Espacial: Coordenadas y Transformaciones (MA.03.C.2. / MA.03.C.3.)</h4>
+                        <p class="mt-1"><strong>Saberes asociados:</strong> Localización y desplazamiento en los cuatro cuadrantes del sistema de coordenadas cartesianas. Movimientos en el plano: simetría axial, traslación y giro respecto a un centro.</p>
+                        <p class="mt-1 text-emerald-800 font-semibold"><strong>Competencias Específicas y Criterios:</strong> CE.MAT.3 (Criterios 3.1 y 3.2: Describir y representar posiciones y movimientos en el espacio utilizando sistemas de referencia cartesianos y transformaciones geométricas).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA GLOBAL -->
+    <footer class="bg-slate-900 text-slate-300 text-xs py-4 px-4 mt-10 border-t-4 border-uaBlue no-print">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div>
+                <span class="font-bold text-white">Academia U.A. · Matemáticas 6º Educación Primaria (Andalucía)</span>
+                <span class="hidden sm:inline"> | </span>
+                <span class="block sm:inline">Basado en la Orden de 30 de mayo de 2023 (LOMLOE) y enfoque DUA.</span>
+            </div>
+            <div class="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 text-allMightYellow font-bold">
+                Creada por Carlos H. González Ortega (profesaurio)
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: BANCO DE 60 PREGUNTAS, GENERADORES SVG, DUA Y MOTOR DE EVALUACIÓN -->
+    <script>
+        // =========================================================================
+        // 1. ESTADO GLOBAL DE LA APLICACIÓN
+        // =========================================================================
+        const appState = {
+            studentName: '',
+            avatar: 'oneforall',
+            currentMissionIndex: 0,
+            currentQuestionIndex: 0,
+            // Almacena respuestas: { missionIdx: { qIdx: { selected: number, isCorrect: boolean } } }
+            answers: { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {} },
+            dua: {
+                largeText: false,
+                easyRead: false,
+                highContrast: false
+            },
+            lastFeedbackText: ''
+        };
+
+        // =========================================================================
+        // 2. CURRÍCULO ANDALUZ (ORDEN 30 DE MAYO 2023) Y 60 PREGUNTAS (10 x 6 SABERES)
+        // =========================================================================
+        const missionsData = [
+            // ---------------------------------------------------------------------
+            // MISIÓN 2: SUMA DE NÚMEROS NEGATIVOS Y POSITIVOS
+            // ---------------------------------------------------------------------
+            {
+                id: 1,
+                code: "MISIÓN 2",
+                title: "Suma de Números Enteros",
+                heroMentor: "Izuku Midoriya (Deku)",
+                color: "from-emerald-500 to-teal-700",
+                badgeBg: "bg-emerald-100 text-emerald-900",
+                saber: "MA.03.A.2. Estrategias de cálculo de sumas con números enteros (positivos, negativos y cero).",
+                competencia: "CE.MAT.2",
+                criterioCode: "Criterio 2.2",
+                criterioDesc: "Realizar operaciones de suma con números enteros aplicando con precisión las reglas de los signos.",
+                questions: [
+                    {
+                        q: "Calcula el resultado de la siguiente suma de energía: (-5) + (+3) =",
+                        options: ["+8", "-8", "-2", "+2"],
+                        correct: 2,
+                        explanation: "Al sumar dos números con distinto signo (-5 y +3), restamos sus valores absolutos (5 - 3 = 2) y gana el signo del número con mayor valor absoluto (-5), por lo que da -2."
+                    },
+                    {
+                        q: "Resuelve la combinación de fuerzas del mismo signo: (-4) + (-6) =",
+                        options: ["+10", "-10", "-2", "+2"],
+                        correct: 1,
+                        explanation: "Al sumar dos números con el mismo signo negativo, se suman sus valores (4 + 6 = 10) y se conserva el signo negativo: -10."
+                    },
+                    {
+                        q: "¿Cuál es el resultado de la suma (+7) + (-9)?",
+                        options: ["-2", "+2", "-16", "+16"],
+                        correct: 0,
+                        explanation: "Tienen distinto signo (+7 y -9). Restamos sus valores absolutos (9 - 7 = 2) y gana el signo del mayor (-9). El resultado es -2."
+                    },
+                    {
+                        q: "Calcula la siguiente suma con el elemento neutro: (-8) + 0 =",
+                        options: ["0", "+8", "-8", "-80"],
+                        correct: 2,
+                        explanation: "El cero (0) no altera el valor de ningún número entero al sumarlo. Por tanto, (-8) + 0 = -8."
+                    },
+                    {
+                        q: "Suma estas dos cargas positivas de One For All: (+6) + (+8) =",
+                        options: ["-14", "+2", "+14", "-2"],
+                        correct: 2,
+                        explanation: "Como ambos sumandos tienen el mismo signo positivo (+), sumamos sus valores (6 + 8 = 14) y conservamos el signo positivo: +14."
+                    },
+                    {
+                        q: "¿Cuánto da la suma de distinto signo (+11) + (-4)?",
+                        options: ["+15", "-7", "+7", "-15"],
+                        correct: 2,
+                        explanation: "Tienen distinto signo (+11 y -4). Restamos sus valores absolutos (11 - 4 = 7) y gana el signo del mayor (+11). El resultado es +7."
+                    },
+                    {
+                        q: "Resuelve esta suma de tres sumandos paso a paso: (-3) + (+5) + (-4) =",
+                        options: ["-2", "+2", "-12", "+6"],
+                        correct: 0,
+                        explanation: "Primero sumamos (-3) + (+5): tienen distinto signo, restamos (5 - 3 = 2) y gana el positivo (+2). Después sumamos (+2) + (-4): distinto signo, restamos (4 - 2 = 2) y gana el negativo (-2)."
+                    },
+                    {
+                        q: "¿Qué sumando falta para que se cumpla la igualdad? (-6) + [ ? ] = 0",
+                        options: ["-6", "0", "+6", "+12"],
+                        correct: 2,
+                        explanation: "Al sumar dos números opuestos con el mismo valor absoluto y distinto signo, el resultado siempre es 0: (-6) + (+6) = 0."
+                    },
+                    {
+                        q: "Calcula esta suma de tres números negativos: (-2) + (-5) + (-3) =",
+                        options: ["+10", "-10", "-4", "+4"],
+                        correct: 1,
+                        explanation: "Todos los sumandos tienen el mismo signo negativo (-). Sumamos todos sus valores (2 + 5 + 3 = 10) y conservamos el signo negativo: -10."
+                    },
+                    {
+                        q: "¿Qué número debe ir en el hueco para que esta suma sea correcta? (+4) + [ ? ] = -3",
+                        options: ["-7", "+7", "-1", "+1"],
+                        correct: 0,
+                        explanation: "Para pasar de +4 a -3 debemos sumar un número negativo mayor: (+4) + (-7) = -3 (distinto signo: 7 - 4 = 3 y gana el signo de -7)."
+                    }
+                ]
+            },
+
+            // ---------------------------------------------------------------------
+            // MISIÓN 3: SITUAR EN LA RECTA NUMÉRICA (CON SVG DINÁMICO)
+            // ---------------------------------------------------------------------
+            {
+                id: 2,
+                code: "MISIÓN 3",
+                title: "Situar en la Recta Numérica",
+                heroMentor: "Tenya Iida (Ingenium)",
+                color: "from-blue-600 to-indigo-800",
+                badgeBg: "bg-blue-100 text-blue-900",
+                saber: "MA.03.A.1. Representación y localización de números enteros en la recta numérica.",
+                competencia: "CE.MAT.2 y CE.MAT.4",
+                criterioCode: "Criterio 2.1",
+                criterioDesc: "Representar y localizar con exactitud números enteros positivos y negativos en la recta numérica.",
+                questions: [
+                    {
+                        q: "Observa la recta numérica de entrenamiento de Ingenium. ¿Qué número entero señala el punto rojo A?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: -3, label: "A", color: "#ef4444" }] },
+                        options: ["-2", "-3", "+3", "-4"],
+                        correct: 1,
+                        explanation: "Contando desde el 0 hacia la izquierda (números negativos), el punto A está 3 unidades a la izquierda: -3."
+                    },
+                    {
+                        q: "En esta recta numérica, ¿qué letra está situada exactamente en el número +4?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: -4, label: "A", color: "#ef4444" }, { val: 2, label: "B", color: "#3b82f6" }, { val: 4, label: "C", color: "#10b981" }, { val: -1, label: "D", color: "#f59e0b" }] },
+                        options: ["Punto A", "Punto B", "Punto C", "Punto D"],
+                        correct: 2,
+                        explanation: "El punto C está 4 unidades a la derecha del 0, que corresponde al +4. (El punto A está en -4)."
+                    },
+                    {
+                        q: "Fíjate bien en la escala de esta recta (va de 2 en 2). ¿Qué número representa el punto M?",
+                        visual: { type: "numberLine", min: -10, max: 10, step: 2, points: [{ val: -6, label: "M", color: "#ef4444" }] },
+                        options: ["-3", "-6", "-8", "+6"],
+                        correct: 1,
+                        explanation: "Cada marca vale 2 unidades. Desde el 0 hacia la izquierda contamos: -2, -4, -6. El punto M está en -6."
+                    },
+                    {
+                        q: "¿Cuántas unidades de distancia hay entre el punto A (-4) y el punto B (+3) en la recta numérica?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: -4, label: "A", color: "#ef4444" }, { val: 3, label: "B", color: "#10b981" }] },
+                        options: ["1 unidad", "4 unidades", "7 unidades", "8 unidades"],
+                        correct: 2,
+                        explanation: "Desde -4 hasta 0 hay 4 pasos, y desde 0 hasta +3 hay 3 pasos. En total: 4 + 3 = 7 unidades de distancia."
+                    },
+                    {
+                        q: "Si Deku está en el punto A (-2) y da un salto de 5 unidades hacia la DERECHA, ¿a qué número llega?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: -2, label: "A", color: "#10b981" }] },
+                        options: ["-7", "+3", "+5", "+2"],
+                        correct: 1,
+                        explanation: "Saltar a la derecha es sumar: (-2) + 5 = +3."
+                    },
+                    {
+                        q: "Bakugo parte del punto B (+2) y retrocede 6 unidades hacia la IZQUIERDA. ¿En qué número cae?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: 2, label: "B", color: "#f97316" }] },
+                        options: ["-4", "+4", "-6", "-8"],
+                        correct: 0,
+                        explanation: "Moverse hacia la izquierda es restar: (+2) - 6 = -4."
+                    },
+                    {
+                        q: "Observa la recta graduada de 5 en 5. ¿Qué valor tiene el punto P?",
+                        visual: { type: "numberLine", min: -20, max: 20, step: 5, points: [{ val: -15, label: "P", color: "#8b5cf6" }] },
+                        options: ["-3", "-10", "-15", "+15"],
+                        correct: 2,
+                        explanation: "Cada división avanza de 5 en 5. Tres marcas a la izquierda del 0 corresponden a -15."
+                    },
+                    {
+                        q: "¿Qué número entero está situado exactamente en la MITAD entre -4 y +2?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: -4, label: "Inicio", color: "#ef4444" }, { val: 2, label: "Fin", color: "#10b981" }] },
+                        options: ["0", "-1", "-2", "+1"],
+                        correct: 1,
+                        explanation: "Entre -4 y +2 hay 6 unidades. La mitad de 6 es 3. Si avanzamos 3 pasos desde -4 llegamos a -1."
+                    },
+                    {
+                        q: "¿Qué punto representa el número OPUESTO de +3 en la siguiente recta?",
+                        visual: { type: "numberLine", min: -5, max: 5, step: 1, points: [{ val: -3, label: "X", color: "#ef4444" }, { val: -2, label: "Y", color: "#3b82f6" }, { val: 3, label: "Z", color: "#10b981" }] },
+                        options: ["Punto Z", "Punto Y", "Punto X", "Ninguno"],
+                        correct: 2,
+                        explanation: "El opuesto de +3 es -3, que está a la misma distancia del 0 pero a la izquierda: el Punto X."
+                    },
+                    {
+                        q: "En esta recta de 10 en 10, ¿qué número señala la flecha K?",
+                        visual: { type: "numberLine", min: -40, max: 40, step: 10, points: [{ val: 30, label: "K", color: "#0284c7" }] },
+                        options: ["+3", "+20", "+30", "-30"],
+                        correct: 2,
+                        explanation: "Está 3 marcas a la derecha del 0 en una escala de 10 en 10: +30."
+                    }
+                ]
+            },
+
+            // ---------------------------------------------------------------------
+            // MISIÓN 4: LOCALIZAR COORDENADAS EN EL EJE CARTESIANO (CON SVG)
+            // ---------------------------------------------------------------------
+            {
+                id: 3,
+                code: "MISIÓN 4",
+                title: "Coordenadas en el Plano Cartesiano",
+                heroMentor: "Ochaco Uraraka (Uravity)",
+                color: "from-pink-500 to-purple-700",
+                badgeBg: "bg-pink-100 text-pink-900",
+                saber: "MA.03.C.2. Localización y descripción de posiciones en los cuatro cuadrantes del sistema cartesiano.",
+                competencia: "CE.MAT.3",
+                criterioCode: "Criterio 3.1",
+                criterioDesc: "Localizar y representar puntos en los cuatro cuadrantes del eje de coordenadas cartesianas.",
+                questions: [
+                    {
+                        q: "Uravity está localizando balizas de rescate. ¿Cuáles son las coordenadas (X, Y) del punto A?",
+                        visual: { type: "grid", range: 4, points: [{ x: 2, y: 3, label: "A", color: "#ef4444" }] },
+                        options: ["(3, 2)", "(2, 3)", "(-2, 3)", "(2, -3)"],
+                        correct: 1,
+                        explanation: "Primero miramos el eje horizontal X (+2 a la derecha) y luego el vertical Y (+3 hacia arriba). Coordenadas: (2, 3)."
+                    },
+                    {
+                        q: "Observa el radar cartesiano. ¿Cuáles son las coordenadas del punto B en el segundo cuadrante?",
+                        visual: { type: "grid", range: 4, points: [{ x: -3, y: 2, label: "B", color: "#3b82f6" }] },
+                        options: ["(2, -3)", "(3, -2)", "(-3, 2)", "(-2, 3)"],
+                        correct: 2,
+                        explanation: "En el eje horizontal X está en -3 (izquierda) y en el eje vertical Y está en +2 (arriba). Por tanto es (-3, 2)."
+                    },
+                    {
+                        q: "Localiza el punto C en el tercer cuadrante del mapa de la ciudad:",
+                        visual: { type: "grid", range: 4, points: [{ x: -2, y: -4, label: "C", color: "#10b981" }] },
+                        options: ["(-2, -4)", "(-4, -2)", "(2, -4)", "(-2, 4)"],
+                        correct: 0,
+                        explanation: "Ambos ejes son negativos: -2 en el eje X y -4 en el eje Y. El punto C es (-2, -4)."
+                    },
+                    {
+                        q: "¿Qué coordenadas tiene el punto D situado en el cuarto cuadrante?",
+                        visual: { type: "grid", range: 4, points: [{ x: 4, y: -1, label: "D", color: "#f97316" }] },
+                        options: ["(-1, 4)", "(4, -1)", "(-4, 1)", "(1, -4)"],
+                        correct: 1,
+                        explanation: "Avanzamos +4 a la derecha en el eje X y bajamos -1 en el eje Y: (4, -1)."
+                    },
+                    {
+                        q: "¿Qué punto del plano está situado exactamente en las coordenadas (-1, 3)?",
+                        visual: { type: "grid", range: 4, points: [{ x: 3, y: -1, label: "P", color: "#ef4444" }, { x: -1, y: 3, label: "Q", color: "#10b981" }, { x: -3, y: -1, label: "R", color: "#3b82f6" }] },
+                        options: ["Punto P", "Punto Q", "Punto R", "El origen (0,0)"],
+                        correct: 1,
+                        explanation: "(-1, 3) significa -1 a la izquierda y +3 hacia arriba, que corresponde al Punto Q."
+                    },
+                    {
+                        q: "Fíjate bien: el punto M está sobre el propio eje Y. ¿Cuáles son sus coordenadas?",
+                        visual: { type: "grid", range: 4, points: [{ x: 0, y: -3, label: "M", color: "#8b5cf6" }] },
+                        options: ["(-3, 0)", "(0, -3)", "(0, 3)", "(-3, -3)"],
+                        correct: 1,
+                        explanation: "Como no se desplaza ni a izquierda ni a derecha, su coordenada X es 0. Baja 3 unidades en Y, así que es (0, -3)."
+                    },
+                    {
+                        q: "¿Qué coordenadas corresponden al punto N situado sobre el eje horizontal X?",
+                        visual: { type: "grid", range: 4, points: [{ x: -4, y: 0, label: "N", color: "#ec4899" }] },
+                        options: ["(0, -4)", "(4, 0)", "(-4, 0)", "(-4, -4)"],
+                        correct: 2,
+                        explanation: "Está en -4 del eje X y a altura 0 en el eje Y. Sus coordenadas son (-4, 0)."
+                    },
+                    {
+                        q: "¿Cómo se llama el punto donde se cruzan el eje X y el eje Y, cuyas coordenadas son (0, 0)?",
+                        visual: { type: "grid", range: 3, points: [{ x: 0, y: 0, label: "O", color: "#0f172a" }] },
+                        options: ["Eje de simetría", "Origen de coordenadas", "Cuadrante positivo", "Vértice nulo"],
+                        correct: 1,
+                        explanation: "El punto (0, 0) donde se cortan ambos ejes perpendiculares se llama Origen de coordenadas."
+                    },
+                    {
+                        q: "Si un punto tiene su primera coordenada NEGATIVA y la segunda POSITIVA, por ejemplo (-2, +4), ¿en qué cuadrante está?",
+                        visual: { type: "grid", range: 4, points: [{ x: -2, y: 4, label: "?", color: "#0284c7" }] },
+                        options: ["1.er Cuadrante", "2.º Cuadrante", "3.er Cuadrante", "4.º Cuadrante"],
+                        correct: 1,
+                        explanation: "El 2.º Cuadrante es el superior izquierdo, donde la X es negativa (-) y la Y es positiva (+)."
+                    },
+                    {
+                        q: "Observa los puntos A(-2, 1) y B(3, 1). ¿Qué tienen en común?",
+                        visual: { type: "grid", range: 4, points: [{ x: -2, y: 1, label: "A", color: "#ef4444" }, { x: 3, y: 1, label: "B", color: "#10b981" }] },
+                        options: ["Están en el mismo cuadrante", "Tienen la misma coordenada Y (altura +1)", "Tienen la misma coordenada X", "Están en el eje X"],
+                        correct: 1,
+                        explanation: "Ambos puntos tienen como segunda coordenada +1, por lo que están a la misma altura horizontal."
+                    }
+                ]
+            },
+
+            // ---------------------------------------------------------------------
+            // MISIÓN 5: RESOLUCIÓN DE PROBLEMAS CON NÚMEROS NEGATIVOS
+            // ---------------------------------------------------------------------
+            {
+                id: 4,
+                code: "MISIÓN 5",
+                title: "Resolución de Problemas Heroicos",
+                heroMentor: "All Might",
+                color: "from-amber-400 to-red-600",
+                badgeBg: "bg-amber-100 text-amber-900",
+                saber: "MA.03.A.3. / MA.03.F.1. Resolución de problemas contextualizados con números enteros.",
+                competencia: "CE.MAT.1 y CE.MAT.2",
+                criterioCode: "Criterio 1.1",
+                criterioDesc: "Comprender y resolver problemas de la vida cotidiana mediante el uso de números enteros, verificando la validez de las soluciones.",
+                questions: [
+                    {
+                        q: "En la base de montaña de la U.A., a las 7:00 de la mañana el termómetro marcaba -4 ºC. Al mediodía la temperatura subió 11 ºC. ¿Qué temperatura hacía al mediodía?",
+                        options: ["+15 ºC", "-15 ºC", "+7 ºC", "-7 ºC"],
+                        correct: 2,
+                        explanation: "Partimos de -4 ºC y sumamos 11 ºC: (-4) + (+11) = +7 ºC."
+                    },
+                    {
+                        q: "Eraser Head sube en el ascensor desde el sótano -3 hasta la planta +5 de la torre de control. ¿Cuántas plantas ha subido en total?",
+                        options: ["2 plantas", "8 plantas", "7 plantas", "5 plantas"],
+                        correct: 1,
+                        explanation: "Desde el sótano -3 hasta la planta 0 hay 3 plantas, y de la 0 a la +5 hay 5 plantas. En total: 3 + 5 = 8 plantas."
+                    },
+                    {
+                        q: "La heroína Froppy bucea a -18 metros bajo el mar. Sube 7 metros para esquivar una roca y luego vuelve a bajar 12 metros. ¿A qué profundidad está ahora?",
+                        options: ["-23 metros", "-13 metros", "-37 metros", "+23 metros"],
+                        correct: 0,
+                        explanation: "Operación paso a paso: (-18) + (+7) = -11 metros. Luego baja 12 más: (-11) + (-12) = -23 metros."
+                    },
+                    {
+                        q: "Un equipo de héroes tenía +15 puntos de mérito. Por llegar tarde a la guardia pierden 22 puntos. ¿Cuál es su puntuación actual?",
+                        options: ["+7 puntos", "-7 puntos", "-37 puntos", "+37 puntos"],
+                        correct: 1,
+                        explanation: "Tenían +15 y pierden 22: (+15) - (+22) = -7 puntos."
+                    },
+                    {
+                        q: "La temperatura máxima en una misión en Alaska fue de +3 ºC y la mínima de -9 ºC. ¿Cuál fue la diferencia (variación) entre la máxima y la mínima?",
+                        options: ["6 ºC", "12 ºC", "-6 ºC", "9 ºC"],
+                        correct: 1,
+                        explanation: "La diferencia entre el máximo (+3) y el mínimo (-9) es: (+3) - (-9) = 3 + 9 = 12 ºC de diferencia."
+                    },
+                    {
+                        q: "El filósofo griego Pitágoras nació en el año 570 a. C. (-570) y vivió 75 años. ¿En qué año falleció?",
+                        options: ["645 a. C. (-645)", "495 a. C. (-495)", "495 d. C. (+495)", "505 a. C. (-505)"],
+                        correct: 1,
+                        explanation: "Como los años antes de Cristo avanzan hacia el 0: (-570) + 75 = -495 (año 495 a. C.)."
+                    },
+                    {
+                        q: "Un dron de vigilancia vuela a +85 m de altura sobre el mar, mientras un robot submarino está justo debajo a -35 m. ¿Qué distancia vertical los separa?",
+                        options: ["50 metros", "110 metros", "120 metros", "85 metros"],
+                        correct: 2,
+                        explanation: "Sumamos las distancias respecto al nivel del mar (0): 85 + 35 = 120 metros de separación."
+                    },
+                    {
+                        q: "En el comedor de la U.A. hay un congelador a -18 ºC. Si se va la luz y la temperatura sube 2 ºC cada hora, ¿qué temperatura tendrá al cabo de 4 horas?",
+                        options: ["-26 ºC", "-10 ºC", "-16 ºC", "+8 ºC"],
+                        correct: 1,
+                        explanation: "En 4 horas sube 4 × 2 = +8 ºC. Entonces: (-18) + (+8) = -10 ºC."
+                    },
+                    {
+                        q: "Mina Ashido tiene un saldo de -12 monedas heroicas en la tienda de equipamiento. Realiza dos misiones y gana +20 monedas en cada una. ¿Cuánto dinero tiene ahora?",
+                        options: ["+8 monedas", "+28 monedas", "+40 monedas", "-28 monedas"],
+                        correct: 1,
+                        explanation: "Gana 2 × 20 = +40 monedas. Como debía 12: (-12) + (+40) = +28 monedas."
+                    },
+                    {
+                        q: "Un ascensor parte de la planta +4, baja 6 plantas, sube 3 plantas y finalmente baja 5 plantas. ¿En qué planta termina?",
+                        options: ["Planta -4", "Planta -2", "Planta 0", "Planta +2"],
+                        correct: 0,
+                        explanation: "Calculamos: +4 - 6 = -2; luego -2 + 3 = +1; finalmente +1 - 5 = -4 (cuarto sótano)."
+                    }
+                ]
+            },
+
+            // ---------------------------------------------------------------------
+            // MISIÓN 6: REPRESENTAR FIGURAS EN EL EJE (SIMETRÍA, GIRO, TRASLACIÓN)
+            // ---------------------------------------------------------------------
+            {
+                id: 5,
+                code: "MISIÓN 6",
+                title: "Figuras en el Eje: Simetría, Giro y Traslación",
+                heroMentor: "Momo Yaoyorozu (Creati)",
+                color: "from-indigo-600 to-purple-800",
+                badgeBg: "bg-indigo-100 text-indigo-900",
+                saber: "MA.03.C.3. Transformaciones geométricas en el plano cartesiano: simetría, traslación y giro.",
+                competencia: "CE.MAT.3",
+                criterioCode: "Criterio 3.2",
+                criterioDesc: "Identificar y representar figuras en el plano cartesiano aplicando simetrías, traslaciones y giros.",
+                questions: [
+                    {
+                        q: "Creati crea un escudo triangular azul en el 1.er cuadrante y aplica una SIMETRÍA respecto al eje vertical Y (como un espejo). ¿Dónde aparece la figura simétrica?",
+                        visual: {
+                            type: "transform",
+                            orig: [[1, 1], [3, 1], [1, 3]],
+                            trans: [[-1, 1], [-3, 1], [-1, 3]],
+                            labelOrig: "Original",
+                            labelTrans: "Simetría Eje Y"
+                        },
+                        options: ["En el 2.º cuadrante (izquierda)", "En el 4.º cuadrante (abajo)", "En el 3.er cuadrante", "Encima de la original"],
+                        correct: 0,
+                        explanation: "Al hacer simetría respecto al eje vertical Y, la figura pasa al 2.º cuadrante manteniendo su altura (Y) pero cambiando el signo de X."
+                    },
+                    {
+                        q: "Si el punto A(2, 3) se refleja mediante una SIMETRÍA respecto al eje vertical Y, ¿cuáles son las coordenadas de su punto simétrico A'?",
+                        visual: {
+                            type: "transform",
+                            orig: [[2, 3]],
+                            trans: [[-2, 3]],
+                            labelOrig: "A(2,3)",
+                            labelTrans: "A'(-2,3)"
+                        },
+                        options: ["(2, -3)", "(-2, 3)", "(-2, -3)", "(3, 2)"],
+                        correct: 1,
+                        explanation: "En una simetría respecto al eje Y, la altura Y (+3) no cambia, pero la X pasa al lado opuesto (-2): A'(-2, 3)."
+                    },
+                    {
+                        q: "Ahora aplicamos una SIMETRÍA respecto al eje horizontal X al triángulo azul (como reflejado en el agua). ¿Qué ocurre con sus coordenadas?",
+                        visual: {
+                            type: "transform",
+                            orig: [[1, 1], [3, 1], [2, 3]],
+                            trans: [[1, -1], [3, -1], [2, -3]],
+                            labelOrig: "Original",
+                            labelTrans: "Simetría Eje X"
+                        },
+                        options: ["Pasa al 4.º cuadrante con la Y negativa", "Pasa al 2.º cuadrante", "Se hace el doble de grande", "Gira 90 grados"],
+                        correct: 0,
+                        explanation: "Al reflejar respecto al eje horizontal X, la figura pasa debajo del eje (4.º cuadrante): mantiene su X positiva y cambia la Y a negativa."
+                    },
+                    {
+                        q: "Observa el movimiento de la figura azul a la verde. No ha girado ni se ha volteado, solo se ha deslizado. ¿Qué movimiento es?",
+                        visual: {
+                            type: "transform",
+                            orig: [[-3, 1], [-1, 1], [-3, 3]],
+                            trans: [[1, 1], [3, 1], [1, 3]],
+                            labelOrig: "Inicio",
+                            labelTrans: "Traslación (+4 X)"
+                        },
+                        options: ["Una simetría axial", "Una traslación de 4 unidades a la derecha", "Un giro de 180º", "Una ampliación"],
+                        correct: 1,
+                        explanation: "Deslizar una figura en línea recta manteniendo su forma y orientación se llama TRASLACIÓN (en este caso, +4 unidades en el eje X)."
+                    },
+                    {
+                        q: "El punto P(-2, 2) sufre una TRASLACIÓN de 5 unidades a la derecha (+5 en X) y 3 unidades hacia abajo (-3 en Y). ¿Dónde termina P'?",
+                        visual: {
+                            type: "transform",
+                            orig: [[-2, 2]],
+                            trans: [[3, -1]],
+                            labelOrig: "P(-2,2)",
+                            labelTrans: "P'(3,-1)"
+                        },
+                        options: ["(3, -1)", "(-7, 5)", "(3, 5)", "(-3, 1)"],
+                        correct: 0,
+                        explanation: "Sumamos el desplazamiento a cada coordenada: X = -2 + 5 = +3; Y = 2 - 3 = -1. Resultado: (3, -1)."
+                    },
+                    {
+                        q: "Observa la bandera azul en el 1.er cuadrante y la verde en el 2.º cuadrante. Ha rotado alrededor del origen (0,0) un cuarto de vuelta. ¿Qué movimiento es?",
+                        visual: {
+                            type: "transform",
+                            orig: [[1, 0], [3, 0], [3, 1]],
+                            trans: [[0, 1], [0, 3], [-1, 3]],
+                            labelOrig: "Original",
+                            labelTrans: "Giro 90º"
+                        },
+                        options: ["Giro de 90º en sentido antihorario", "Traslación horizontal", "Simetría respecto al eje X", "Giro de 360º"],
+                        correct: 0,
+                        explanation: "La figura ha rotado 90º (un cuarto de vuelta) en sentido contrario a las agujas del reloj alrededor del origen (0,0)."
+                    },
+                    {
+                        q: "Si giramos una figura 180º (media vuelta completa) alrededor del origen (0,0), ¿dónde aparece un punto que estaba en (2, 3)?",
+                        visual: {
+                            type: "transform",
+                            orig: [[2, 3]],
+                            trans: [[-2, -3]],
+                            labelOrig: "(2,3)",
+                            labelTrans: "Giro 180º (-2,-3)"
+                        },
+                        options: ["En (-2, -3)", "En (-2, 3)", "En (2, -3)", "En (0, 0)"],
+                        correct: 0,
+                        explanation: "Un giro de 180º respecto al origen (0,0) invierte el signo de ambas coordenadas: (2, 3) pasa a (-2, -3) en el 3.er cuadrante."
+                    },
+                    {
+                        q: "Un cuadrado tiene sus vértices en (1,1), (3,1), (3,3) y (1,3). Si lo trasladamos 4 unidades hacia la IZQUIERDA (-4 en X), ¿en qué cuadrante queda?",
+                        visual: {
+                            type: "transform",
+                            orig: [[1, 1], [3, 1], [3, 3], [1, 3]],
+                            trans: [[-3, 1], [-1, 1], [-1, 3], [-3, 3]],
+                            labelOrig: "1º Cuadrante",
+                            labelTrans: "2º Cuadrante"
+                        },
+                        options: ["En el 2.º cuadrante", "En el 3.er cuadrante", "En el 4.º cuadrante", "Sigue en el 1.º"],
+                        correct: 0,
+                        explanation: "Al restar 4 a las coordenadas X (1-4 = -3 y 3-4 = -1), las X pasan a ser negativas y las Y siguen positivas: 2.º cuadrante."
+                    },
+                    {
+                        q: "¿Qué característica comparten las tres transformaciones: simetría, traslación y giro?",
+                        options: ["Cambian el tamaño de la figura", "Mantienen exactamente la forma y el tamaño de la figura original", "Solo se pueden hacer en el 1.er cuadrante", "Deforman los ángulos"],
+                        correct: 1,
+                        explanation: "La simetría, la traslación y el giro son movimientos rígidos (isometrías): conservan siempre la forma y las medidas de la figura."
+                    },
+                    {
+                        q: "Si un punto está en (-3, -2) y le aplicamos una simetría respecto al eje vertical Y, ¿cuáles serán sus nuevas coordenadas?",
+                        visual: {
+                            type: "transform",
+                            orig: [[-3, -2]],
+                            trans: [[3, -2]],
+                            labelOrig: "(-3,-2)",
+                            labelTrans: "(3,-2)"
+                        },
+                        options: ["(3, -2)", "(-3, 2)", "(3, 2)", "(-2, -3)"],
+                        correct: 0,
+                        explanation: "Al reflejar respecto al eje vertical Y, pasa del 3.er cuadrante al 4.º cuadrante: la X cambia de -3 a +3, y la Y se mantiene en -2."
+                    }
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 3. GENERADORES DE GRÁFICOS SVG DINÁMICOS (RECTAS, EJES Y FIGURAS)
+        // =========================================================================
+        function renderVisualSVG(visual) {
+            if (!visual) return '';
+
+            // A) RECTA NUMÉRICA
+            if (visual.type === 'numberLine') {
+                const { min, max, step, points } = visual;
+                const width = 520;
+                const height = 95;
+                const margin = 40;
+                const usableW = width - margin * 2;
+                const totalRange = max - min;
+
+                const valToX = (v) => margin + ((v - min) / totalRange) * usableW;
+
+                let ticksHTML = '';
+                for (let v = min; v <= max; v += step) {
+                    const x = valToX(v);
+                    const isZero = v === 0;
+                    const color = isZero ? '#0f172a' : (v < 0 ? '#dc2626' : '#059669');
+                    ticksHTML += `
+                        <line x1="${x}" y1="${isZero ? 42 : 46}" x2="${x}" y2="${isZero ? 62 : 58}" stroke="${color}" stroke-width="${isZero ? 3 : 2}"/>
+                        <text x="${x}" y="78" font-size="13" font-weight="bold" fill="${color}" text-anchor="middle">${v > 0 ? '+' + v : v}</text>
+                    `;
+                }
+
+                let pointsHTML = '';
+                points.forEach(p => {
+                    const px = valToX(p.val);
+                    pointsHTML += `
+                        <circle cx="${px}" cy="52" r="7" fill="${p.color}" stroke="#0f172a" stroke-width="2"/>
+                        <rect x="${px - 22}" y="12" width="44" height="22" rx="6" fill="${p.color}" stroke="#0f172a" stroke-width="1.5"/>
+                        <text x="${px}" y="27" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">${p.label}</text>
+                        <line x1="${px}" y1="34" x2="${px}" y2="45" stroke="#0f172a" stroke-width="2"/>
+                    `;
+                });
+
+                return `
+                    <svg viewBox="0 0 ${width} ${height}" class="w-full max-w-xl h-auto select-none">
+                        <line x1="15" y1="52" x2="${width - 15}" y2="52" stroke="#0f172a" stroke-width="3"/>
+                        <polygon points="${width - 15},52 ${width - 25},46 ${width - 25},58" fill="#0f172a"/>
+                        <polygon points="15,52 25,46 25,58" fill="#0f172a"/>
+                        ${ticksHTML}
+                        ${pointsHTML}
+                    </svg>
+                `;
+            }
+
+            // B) PLANO CARTESIANO (4 CUADRANTES)
+            if (visual.type === 'grid') {
+                const r = visual.range || 4;
+                const size = 280;
+                const center = size / 2;
+                const stepPx = (size - 44) / (r * 2);
+
+                const toPxX = (x) => center + x * stepPx;
+                const toPxY = (y) => center - y * stepPx;
+
+                let gridLines = '';
+                for (let i = -r; i <= r; i++) {
+                    const posX = toPxX(i);
+                    const posY = toPxY(i);
+                    gridLines += `<line x1="${posX}" y1="22" x2="${posX}" y2="${size - 22}" stroke="#cbd5e1" stroke-width="1"/>`;
+                    gridLines += `<line x1="22" y1="${posY}" x2="${size - 22}" y2="${posY}" stroke="#cbd5e1" stroke-width="1"/>`;
+                    if (i !== 0) {
+                        gridLines += `<text x="${posX}" y="${center + 14}" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">${i > 0 ? '+' + i : i}</text>`;
+                        gridLines += `<text x="${center - 8}" y="${posY + 3}" font-size="10" font-weight="bold" fill="#475569" text-anchor="end">${i > 0 ? '+' + i : i}</text>`;
+                    }
+                }
+
+                let ptsHTML = '';
+                visual.points.forEach(pt => {
+                    const cx = toPxX(pt.x);
+                    const cy = toPxY(pt.y);
+                    ptsHTML += `
+                        <line x1="${cx}" y1="${center}" x2="${cx}" y2="${cy}" stroke="${pt.color}" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="${center}" y1="${cy}" x2="${cx}" y2="${cy}" stroke="${pt.color}" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <circle cx="${cx}" cy="${cy}" r="6" fill="${pt.color}" stroke="#0f172a" stroke-width="2"/>
+                        <text x="${cx + 9}" y="${cy - 6}" font-size="13" font-weight="900" fill="#0f172a">${pt.label}</text>
+                    `;
+                });
+
+                return `
+                    <svg viewBox="0 0 ${size} ${size}" class="w-64 sm:w-72 h-auto select-none">
+                        <rect x="0" y="0" width="${size}" height="${size}" rx="12" fill="#ffffff"/>
+                        ${gridLines}
+                        <!-- Ejes principales -->
+                        <line x1="16" y1="${center}" x2="${size - 16}" y2="${center}" stroke="#0f172a" stroke-width="2.5"/>
+                        <line x1="${center}" y1="16" x2="${center}" y2="${size - 16}" stroke="#0f172a" stroke-width="2.5"/>
+                        <text x="${size - 12}" y="${center - 6}" font-size="11" font-weight="900" fill="#0047AB">X</text>
+                        <text x="${center + 7}" y="18" font-size="11" font-weight="900" fill="#0047AB">Y</text>
+                        <text x="${center - 6}" y="${center + 13}" font-size="10" font-weight="bold" fill="#0f172a">0</text>
+                        ${ptsHTML}
+                    </svg>
+                `;
+            }
+
+            // C) TRANSFORMACIONES GEOMÉTRICAS EN EL PLANO (SIMETRÍA, GIRO, TRASLACIÓN)
+            if (visual.type === 'transform') {
+                const r = 4;
+                const size = 300;
+                const center = size / 2;
+                const stepPx = (size - 48) / (r * 2);
+
+                const toPxX = (x) => center + x * stepPx;
+                const toPxY = (y) => center - y * stepPx;
+
+                let gridLines = '';
+                for (let i = -r; i <= r; i++) {
+                    const posX = toPxX(i);
+                    const posY = toPxY(i);
+                    gridLines += `<line x1="${posX}" y1="24" x2="${posX}" y2="${size - 24}" stroke="#cbd5e1" stroke-width="1"/>`;
+                    gridLines += `<line x1="24" y1="${posY}" x2="${size - 24}" y2="${posY}" stroke="#cbd5e1" stroke-width="1"/>`;
+                    if (i !== 0) {
+                        gridLines += `<text x="${posX}" y="${center + 13}" font-size="9.5" font-weight="bold" fill="#475569" text-anchor="middle">${i > 0 ? '+' + i : i}</text>`;
+                        gridLines += `<text x="${center - 7}" y="${posY + 3}" font-size="9.5" font-weight="bold" fill="#475569" text-anchor="end">${i > 0 ? '+' + i : i}</text>`;
+                    }
+                }
+
+                const drawShape = (coords, fill, stroke) => {
+                    if (coords.length === 1) {
+                        const [x, y] = coords[0];
+                        return `<circle cx="${toPxX(x)}" cy="${toPxY(y)}" r="6.5" fill="${fill}" stroke="#0f172a" stroke-width="2"/>`;
+                    }
+                    const ptsStr = coords.map(([x, y]) => `${toPxX(x)},${toPxY(y)}`).join(' ');
+                    const verticesDots = coords.map(([x, y]) =>
+                        `<circle cx="${toPxX(x)}" cy="${toPxY(y)}" r="4" fill="${stroke}" stroke="#ffffff" stroke-width="1.5"/>`
+                    ).join('');
+                    return `<polygon points="${ptsStr}" fill="${fill}" fill-opacity="0.6" stroke="${stroke}" stroke-width="2.5"/>${verticesDots}`;
+                };
+
+                return `
+                    <div class="flex flex-col items-center">
+                        <svg viewBox="0 0 ${size} ${size}" class="w-64 sm:w-72 h-auto select-none">
+                            <rect x="0" y="0" width="${size}" height="${size}" rx="12" fill="#ffffff"/>
+                            ${gridLines}
+                            <line x1="16" y1="${center}" x2="${size - 16}" y2="${center}" stroke="#0f172a" stroke-width="2.5"/>
+                            <line x1="${center}" y1="16" x2="${center}" y2="${size - 16}" stroke="#0f172a" stroke-width="2.5"/>
+                            <text x="${size - 12}" y="${center - 5}" font-size="11" font-weight="900" fill="#0047AB">X</text>
+                            <text x="${center + 7}" y="18" font-size="11" font-weight="900" fill="#0047AB">Y</text>
+                            <text x="${center - 6}" y="${center + 13}" font-size="9.5" font-weight="bold" fill="#0f172a">0</text>
+                            ${drawShape(visual.orig, '#3b82f6', '#1d4ed8')}
+                            ${drawShape(visual.trans, '#10b981', '#047857')}
+                        </svg>
+                    </div>
+                `;
+            }
+
+            return '';
+        }
+
+        // =========================================================================
+        // 4. FUNCIONES DE INTERFAZ, AVATARES Y ACCESIBILIDAD DUA
+        // =========================================================================
+        function getAvatarSVG(type, size = 56) {
+            const svgs = {
+                oneforall: `<svg width="${size}" height="${size}" viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" fill="#10B981" stroke="#0f172a" stroke-width="3"/><path d="M44 12 L24 44 L40 44 L34 68 L58 34 L42 34 Z" fill="#FFD700" stroke="#0f172a" stroke-width="2.5"/></svg>`,
+                explosion: `<svg width="${size}" height="${size}" viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" fill="#F97316" stroke="#0f172a" stroke-width="3"/><polygon points="40,10 48,28 68,22 56,39 72,52 52,54 56,72 40,60 24,72 28,54 8,52 24,39 12,22 32,28" fill="#EF4444" stroke="#FFD700" stroke-width="2"/></svg>`,
+                halfhot: `<svg width="${size}" height="${size}" viewBox="0 0 80 80"><path d="M40,5 A35,35 0 0,0 40,75 Z" fill="#38BDF8" stroke="#0f172a" stroke-width="3"/><path d="M40,5 A35,35 0 0,1 40,75 Z" fill="#EF4444" stroke="#0f172a" stroke-width="3"/><circle cx="40" cy="40" r="10" fill="#FFFFFF" stroke="#0f172a" stroke-width="2.5"/></svg>`,
+                gravity: `<svg width="${size}" height="${size}" viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" fill="#A855F7" stroke="#0f172a" stroke-width="3"/><ellipse cx="40" cy="40" rx="28" ry="11" fill="none" stroke="#FFD700" stroke-width="3" transform="rotate(-25 40 40)"/><circle cx="40" cy="40" r="12" fill="#F472B6" stroke="#0f172a" stroke-width="2.5"/></svg>`
+            };
+            return svgs[type] || svgs.oneforall;
+        }
+
+        function selectAvatar(type, btnEl) {
+            appState.avatar = type;
+            document.querySelectorAll('.avatar-option').forEach(el => {
+                el.classList.remove('ring-4', 'ring-allMightYellow', 'border-emerald-600');
+            });
+            btnEl.classList.add('ring-4', 'ring-allMightYellow');
+        }
+
+        function toggleDUA(mode) {
+            appState.dua[mode] = !appState.dua[mode];
+            if (mode === 'largeText') {
+                document.body.classList.toggle('dua-large-text', appState.dua.largeText);
+                document.getElementById('btn-dua-text').classList.toggle('bg-allMightYellow', appState.dua.largeText);
+                document.getElementById('btn-dua-text').classList.toggle('text-slate-950', appState.dua.largeText);
+            }
+            if (mode === 'easyRead') {
+                document.body.classList.toggle('dua-easy-read', appState.dua.easyRead);
+                document.getElementById('btn-dua-easy').classList.toggle('bg-allMightYellow', appState.dua.easyRead);
+                document.getElementById('btn-dua-easy').classList.toggle('text-slate-950', appState.dua.easyRead);
+            }
+            if (mode === 'highContrast') {
+                document.body.classList.toggle('dua-high-contrast', appState.dua.highContrast);
+                document.getElementById('btn-dua-contrast').classList.toggle('bg-allMightYellow', appState.dua.highContrast);
+                document.getElementById('btn-dua-contrast').classList.toggle('text-slate-950', appState.dua.highContrast);
+            }
+        }
+
+        function toggleSupportDrawer() {
+            const drawer = document.getElementById('dua-support-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function openCurriculumModal() {
+            document.getElementById('curriculum-modal').classList.remove('hidden');
+        }
+
+        function closeCurriculumModal() {
+            document.getElementById('curriculum-modal').classList.add('hidden');
+        }
+
+        // Síntesis de Voz (Web Speech API) para Lectura en Voz Alta DUA
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const cleanText = text
+                .replace(/ºC/g, ' grados centígrados')
+                .replace(/\(-/g, ' menos ')
+                .replace(/\(\+/g, ' más ')
+                .replace(/\)/g, '')
+                .replace(/=/g, ' es igual a ');
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = 'es-ES';
+            utterance.rate = 0.96;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function speakCurrentQuestion() {
+            const qObj = missionsData[appState.currentMissionIndex].questions[appState.currentQuestionIndex];
+            const optionsSpeech = qObj.options.map((opt, idx) => `Opción ${['A', 'B', 'C', 'D'][idx]}: ${opt}`).join('. ');
+            speakText(`${qObj.q}. ${optionsSpeech}`);
+        }
+
+        function speakFeedback() {
+            if (appState.lastFeedbackText) {
+                speakText(appState.lastFeedbackText);
+            }
+        }
+
+        // =========================================================================
+        // 5. NAVEGACIÓN Y RENDERIZADO DEL PANEL DE MISIONES
+        // =========================================================================
+        function startTraining() {
+            const nameInput = document.getElementById('student-name').value.trim();
+            if (!nameInput) {
+                document.getElementById('name-error').classList.remove('hidden');
+                document.getElementById('student-name').focus();
+                return;
+            }
+            document.getElementById('name-error').classList.add('hidden');
+            appState.studentName = nameInput;
+
+            document.getElementById('screen-welcome').classList.add('hidden');
+            returnToDashboard();
+        }
+
+        function returnToDashboard() {
+            window.speechSynthesis && window.speechSynthesis.cancel();
+            document.getElementById('screen-quiz').classList.add('hidden');
+            document.getElementById('screen-report').classList.add('hidden');
+            document.getElementById('screen-dashboard').classList.remove('hidden');
+            renderDashboard();
+        }
+
+        function renderDashboard() {
+            document.getElementById('hud-name').textContent = appState.studentName;
+            document.getElementById('hud-avatar').innerHTML = getAvatarSVG(appState.avatar, 62);
+
+            let totalCorrect = 0;
+            let totalAnswered = 0;
+
+            missionsData.forEach((m, mIdx) => {
+                const mAns = appState.answers[mIdx];
+                Object.values(mAns).forEach(a => {
+                    totalAnswered++;
+                    if (a.isCorrect) totalCorrect++;
+                });
+            });
+
+            const pct = Math.round((totalCorrect / 60) * 100);
+            document.getElementById('hud-progress-text').textContent = `${totalCorrect} / 60 retos superados (${totalAnswered} respondidos)`;
+            document.getElementById('hud-score-pct').textContent = `${pct}%`;
+
+            const bar = document.getElementById('global-progress-bar');
+            bar.style.width = `${Math.max(3, pct)}%`;
+            bar.textContent = pct >= 10 ? `${pct}%` : '';
+
+            // Rango heroico según aciertos
+            let rank = "RANGO: ASPIRANTE NOVATO U.A.";
+            if (totalCorrect >= 50) rank = "RANGO: HÉROE N.º 1 · ¡PLUS ULTRA!";
+            else if (totalCorrect >= 35) rank = "RANGO: HÉROE PROFESIONAL PRO";
+            else if (totalCorrect >= 20) rank = "RANGO: LICENCIA PROVISIONAL";
+            else if (totalCorrect >= 10) rank = "RANGO: ESTUDIANTE DESTACADO";
+            document.getElementById('hud-rank').textContent = rank;
+
+            // Renderizar tarjetas de las 6 misiones
+            const grid = document.getElementById('missions-grid');
+            grid.innerHTML = '';
+
+            missionsData.forEach((m, idx) => {
+                const mAns = appState.answers[idx];
+                const answeredCount = Object.keys(mAns).length;
+                const correctCount = Object.values(mAns).filter(a => a.isCorrect).length;
+                const isPassed = answeredCount > 0 && correctCount >= 5;
+
+                let statusBadge = `<span class="bg-slate-200 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-full">Sin iniciar</span>`;
+                if (answeredCount > 0) {
+                    statusBadge = isPassed
+                        ? `<span class="bg-emerald-100 text-emerald-900 border border-emerald-500 text-xs font-black px-2.5 py-1 rounded-full">✅ Superado (${correctCount}/10)</span>`
+                        : `<span class="bg-amber-100 text-amber-900 border border-amber-500 text-xs font-black px-2.5 py-1 rounded-full">⚡ En curso (${correctCount}/10)</span>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = "comic-card comic-card-hover bg-white overflow-hidden flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="bg-gradient-to-r ${m.color} p-4 text-white border-b-3 border-slate-900">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="bg-slate-950/70 text-allMightYellow text-xs font-black px-2.5 py-0.5 rounded">${m.code}</span>
+                                <span class="text-xs font-bold text-white/90">${m.criterioCode}</span>
+                            </div>
+                            <h4 class="font-extrabold text-lg leading-tight">${m.title}</h4>
+                            <p class="text-xs text-white/90 mt-1">Mentor: <strong>${m.heroMentor}</strong></p>
+                        </div>
+                        <div class="p-4 space-y-2.5">
+                            <p class="text-xs text-slate-600 leading-relaxed">${m.saber}</p>
+                            <div class="flex items-center justify-between pt-1">
+                                ${statusBadge}
+                                <span class="text-xs font-bold text-slate-500">${answeredCount}/10 hechos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openMission(${idx})" class="w-full py-2.5 bg-allMightYellow hover:bg-yellow-400 text-slate-950 rounded-xl comic-btn text-sm cursor-pointer">
+                            ${answeredCount === 0 ? 'Entrar a la Misión ➔' : (answeredCount < 10 ? 'Continuar Misión ➔' : 'Repasar Misión ↻')}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // =========================================================================
+        // 6. MOTOR DEL QUIZ INTERACTIVO Y RETROALIMENTACIÓN PEDAGÓGICA
+        // =========================================================================
+        function openMission(missionIdx) {
+            appState.currentMissionIndex = missionIdx;
+            // Buscar la primera pregunta sin responder, o empezar por la 0
+            const mAns = appState.answers[missionIdx];
+            let firstUnanswered = 0;
+            for (let i = 0; i < 10; i++) {
+                if (!mAns[i]) {
+                    firstUnanswered = i;
+                    break;
+                }
+            }
+            appState.currentQuestionIndex = firstUnanswered;
+
+            document.getElementById('screen-dashboard').classList.add('hidden');
+            document.getElementById('screen-report').classList.add('hidden');
+            document.getElementById('screen-quiz').classList.remove('hidden');
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const m = missionsData[appState.currentMissionIndex];
+            const qIdx = appState.currentQuestionIndex;
+            const qObj = m.questions[qIdx];
+            const savedAns = appState.answers[appState.currentMissionIndex][qIdx];
+
+            document.getElementById('quiz-mission-badge').textContent = `${m.code} · MENTOR: ${m.heroMentor.toUpperCase()}`;
+            document.getElementById('quiz-mission-title').textContent = m.title;
+            document.getElementById('quiz-q-number').textContent = qIdx + 1;
+            document.getElementById('quiz-lomloe-tag').textContent = `${m.criterioCode} (${m.competencia}) · ${m.saber.split('.')[0]}`;
+            document.getElementById('quiz-question-text').textContent = qObj.q;
+
+            // Renderizar gráfico SVG si la pregunta lo requiere
+            const visualBox = document.getElementById('quiz-visual-container');
+            if (qObj.visual) {
+                visualBox.innerHTML = renderVisualSVG(qObj.visual);
+                visualBox.classList.remove('hidden');
+            } else {
+                visualBox.innerHTML = '';
+                visualBox.classList.add('hidden');
+            }
+
+            // Renderizar 4 opciones
+            const optContainer = document.getElementById('quiz-options-container');
+            optContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            qObj.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                let baseClasses = "p-4 rounded-xl border-3 border-slate-900 text-left font-bold text-base sm:text-lg flex items-center gap-3 transition-all cursor-pointer ";
+
+                if (savedAns) {
+                    // Ya fue respondida
+                    btn.disabled = true;
+                    if (idx === qObj.correct) {
+                        baseClasses += "bg-emerald-100 border-emerald-700 text-emerald-950 ring-4 ring-emerald-400";
+                    } else if (idx === savedAns.selected && !savedAns.isCorrect) {
+                        baseClasses += "bg-rose-100 border-rose-700 text-rose-950 opacity-90";
+                    } else {
+                        baseClasses += "bg-slate-100 text-slate-500 border-slate-300";
+                    }
+                } else {
+                    baseClasses += "bg-slate-50 hover:bg-amber-50 hover:-translate-y-0.5 shadow-[3px_3px_0px_#0f172a]";
+                    btn.onclick = () => handleAnswer(idx);
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="w-9 h-9 rounded-lg bg-slate-900 text-allMightYellow font-comic text-xl flex items-center justify-center shrink-0">${letters[idx]}</span>
+                    <span>${optText}</span>
+                `;
+                optContainer.appendChild(btn);
+            });
+
+            // Mostrar u ocultar caja de retroalimentación
+            const fbBox = document.getElementById('quiz-feedback-box');
+            if (savedAns) {
+                showFeedbackBox(savedAns.isCorrect, qObj, savedAns.selected);
+            } else {
+                fbBox.classList.add('hidden');
+            }
+        }
+
+        function handleAnswer(selectedIdx) {
+            const mIdx = appState.currentMissionIndex;
+            const qIdx = appState.currentQuestionIndex;
+            const qObj = missionsData[mIdx].questions[qIdx];
+            const isCorrect = selectedIdx === qObj.correct;
+
+            appState.answers[mIdx][qIdx] = {
+                selected: selectedIdx,
+                isCorrect: isCorrect
+            };
+
+            renderQuestion();
+        }
+
+        function showFeedbackBox(isCorrect, qObj, selectedIdx) {
+            const fbBox = document.getElementById('quiz-feedback-box');
+            const fbIcon = document.getElementById('feedback-icon');
+            const fbTitle = document.getElementById('feedback-title');
+            const fbExp = document.getElementById('feedback-explanation');
+            const nextBtn = document.getElementById('btn-next-question');
+
+            fbBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-600', 'bg-rose-50', 'border-rose-600', 'animate-smash');
+            void fbBox.offsetWidth; // Reiniciar animación CSS
+            fbBox.classList.add('animate-smash');
+
+            if (isCorrect) {
+                fbBox.classList.add('bg-emerald-50', 'border-emerald-600');
+                fbIcon.textContent = '💥';
+                fbTitle.textContent = '¡SMASH! ¡RESPUESTA CORRECTA!';
+                fbTitle.className = 'font-comic text-2xl sm:text-3xl tracking-wide text-emerald-800';
+                fbExp.innerHTML = `<strong>¡Excelente trabajo, ${appState.studentName}!</strong> ${qObj.explanation}`;
+                appState.lastFeedbackText = `¡Respuesta correcta! ${qObj.explanation}`;
+            } else {
+                fbBox.classList.add('bg-rose-50', 'border-rose-600');
+                fbIcon.textContent = '🛡️';
+                fbTitle.textContent = '¡CASI! ANALICEMOS EL ERROR PARA MEJORAR';
+                fbTitle.className = 'font-comic text-2xl sm:text-3xl tracking-wide text-rose-800';
+                const chosenText = qObj.options[selectedIdx];
+                const correctText = qObj.options[qObj.correct];
+                fbExp.innerHTML = `
+                    Has elegido <strong>"${chosenText}"</strong>, pero la respuesta correcta es <strong>"${correctText}"</strong>.<br>
+                    <span class="block mt-1.5 text-slate-900 bg-white/80 p-2.5 rounded-lg border border-rose-200">
+                        <strong>💡 Explicación paso a paso:</strong> ${qObj.explanation}
+                    </span>
+                `;
+                appState.lastFeedbackText = `Has elegido ${chosenText}, pero la respuesta correcta es ${correctText}. ${qObj.explanation}`;
+            }
+
+            if (appState.currentQuestionIndex < 9) {
+                nextBtn.innerHTML = `<span>Siguiente Reto (${appState.currentQuestionIndex + 2}/10)</span> <span>➔</span>`;
+            } else {
+                nextBtn.innerHTML = `<span>Finalizar Misión y Ver Misiones</span> <span>🏆</span>`;
+            }
+        }
+
+        function nextQuestion() {
+            window.speechSynthesis && window.speechSynthesis.cancel();
+            if (appState.currentQuestionIndex < 9) {
+                appState.currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                returnToDashboard();
+            }
+        }
+
+        // =========================================================================
+        // 7. INFORME OFICIAL DE EVALUACIÓN LOMLOE (ANDALUCÍA)
+        // =========================================================================
+        function getQualitativeGrade(grade) {
+            if (grade < 5) return { label: "INSUFICIENTE (IN)", bg: "bg-rose-100 text-rose-900 border-rose-400" };
+            if (grade < 6) return { label: "SUFICIENTE (SU)", bg: "bg-amber-100 text-amber-900 border-amber-400" };
+            if (grade < 7) return { label: "BIEN (BI)", bg: "bg-sky-100 text-sky-900 border-sky-400" };
+            if (grade < 9) return { label: "NOTABLE (NT)", bg: "bg-indigo-100 text-indigo-900 border-indigo-400" };
+            return { label: "SOBRESALIENTE (SB)", bg: "bg-emerald-100 text-emerald-900 border-emerald-400" };
+        }
+
+        function showReportScreen() {
+            window.speechSynthesis && window.speechSynthesis.cancel();
+            document.getElementById('screen-dashboard').classList.add('hidden');
+            document.getElementById('screen-quiz').classList.add('hidden');
+            document.getElementById('screen-report').classList.remove('hidden');
+
+            const today = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            document.getElementById('report-date').textContent = today;
+            document.getElementById('report-student-name').textContent = appState.studentName;
+            document.getElementById('report-hero-rank').textContent = document.getElementById('hud-rank').textContent;
+
+            const tbody = document.getElementById('report-table-body');
+            tbody.innerHTML = '';
+
+            let sumGrades = 0;
+            let totalAnsweredAll = 0;
+            let passedCriteriaCount = 0;
+            let weakMissions = [];
+
+            missionsData.forEach((m, idx) => {
+                const mAns = appState.answers[idx];
+                const answered = Object.keys(mAns).length;
+                const correct = Object.values(mAns).filter(a => a.isCorrect).length;
+                totalAnsweredAll += answered;
+
+                // Nota sobre 10 en este criterio (cada pregunta vale 1 punto sobre 10)
+                const grade = correct;
+                sumGrades += grade;
+
+                const isPassed = grade >= 5.0; // Mínimo exigido LOMLOE: 5/10 (50%)
+                if (isPassed) passedCriteriaCount++;
+                else weakMissions.push(m.title);
+
+                const qual = getQualitativeGrade(grade);
+
+                const tr = document.createElement('tr');
+                tr.className = idx % 2 === 0 ? "bg-white" : "bg-slate-50";
+                tr.innerHTML = `
+                    <td class="p-2.5 border border-slate-300">
+                        <strong class="text-slate-900 block">${m.code}: ${m.title}</strong>
+                        <span class="text-xs text-slate-600">${m.saber}</span>
+                    </td>
+                    <td class="p-2.5 border border-slate-300">
+                        <strong class="text-uaBlue block">${m.criterioCode} (${m.competencia})</strong>
+                        <span class="text-xs text-slate-600">${m.criterioDesc}</span>
+                    </td>
+                    <td class="p-2.5 border border-slate-300 text-center font-bold">
+                        ${correct} / 10<br>
+                        <span class="text-[11px] text-slate-500">(${answered} realizadas)</span>
+                    </td>
+                    <td class="p-2.5 border border-slate-300 text-center">
+                        <span class="text-base font-black text-slate-900">${grade.toFixed(1)}</span>
+                        <span class="block text-[10px] font-bold px-1.5 py-0.5 rounded border mt-0.5 ${qual.bg}">${qual.label}</span>
+                    </td>
+                    <td class="p-2.5 border border-slate-300 text-center">
+                        ${isPassed
+                            ? `<span class="inline-block bg-emerald-100 text-emerald-900 border border-emerald-600 font-black text-xs px-2.5 py-1 rounded-lg">✅ SUPERA EL CRITERIO</span>`
+                            : `<span class="inline-block bg-rose-100 text-rose-900 border border-rose-600 font-black text-xs px-2.5 py-1 rounded-lg">⚠️ NO SUPERA (Refuerzo)</span>`
+                        }
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const globalAvg = sumGrades / missionsData.length;
+            const globalQual = getQualitativeGrade(globalAvg);
+
+            document.getElementById('report-global-grade').textContent = globalAvg.toFixed(2);
+            const qualBadge = document.getElementById('report-qualitative');
+            qualBadge.textContent = globalQual.label;
+            qualBadge.className = `ml-2 px-2 py-0.5 rounded text-xs font-black border ${globalQual.bg}`;
+            document.getElementById('report-answered-count').textContent = `${totalAnsweredAll} de 60 actividades completadas (${passedCriteriaCount}/6 criterios superados)`;
+
+            // Dictamen global de mínimos exigidos para 6º EP Andalucía
+            const verdictBox = document.getElementById('report-verdict-box');
+            const verdictTitle = document.getElementById('report-verdict-title');
+            const verdictDesc = document.getElementById('report-verdict-desc');
+
+            if (globalAvg >= 5.0 && passedCriteriaCount >= 4) {
+                verdictBox.className = "p-4 rounded-xl border-2 bg-emerald-50 border-emerald-600 text-emerald-950 flex flex-col justify-center";
+                verdictTitle.textContent = "✅ SUPERA LOS MÍNIMOS EXIGIDOS";
+                verdictDesc.textContent = `Alcanza satisfactoriamente los criterios de evaluación evaluados para 6.º de Educación Primaria (${passedCriteriaCount} de 6 criterios superados).`;
+            } else {
+                verdictBox.className = "p-4 rounded-xl border-2 bg-rose-50 border-rose-600 text-rose-950 flex flex-col justify-center";
+                verdictTitle.textContent = "⚠️ EN PROCESO / NO SUPERA MÍNIMOS";
+                verdictDesc.textContent = `Actualmente supera ${passedCriteriaCount} de 6 criterios (media ${globalAvg.toFixed(1)}). Se recomienda completar las misiones pendientes y reforzar los saberes con dificultad.`;
+            }
+
+            // Recomendaciones pedagógicas DUA personalizadas
+            const recEl = document.getElementById('report-recommendations');
+            if (weakMissions.length === 0) {
+                recEl.innerHTML = `¡Enhorabuena, <strong>${appState.studentName}</strong>! Has superado todos los criterios de evaluación de la unidad (números enteros, operaciones con signos, recta numérica, plano cartesiano y movimientos geométricos). Se propone realizar actividades de profundización y reto creativo en el aula.`;
+            } else {
+                recEl.innerHTML = `El alumno/a <strong>${appState.studentName}</strong> debe reforzar los siguientes bloques de saberes básicos mediante el uso de apoyos visuales DUA (recta numérica graduada y cuadrícula cartesiana manipulativa): <strong>${weakMissions.join(', ')}</strong>.`;
+            }
+        }
+    </script>
+</body>
+</html>
